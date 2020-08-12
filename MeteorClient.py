@@ -23,6 +23,9 @@ class CollectionData(object):
             self.data[collection][id][key] = value
 
     def change_data(self, collection, id, fields, cleared):
+        if collection not in self.data:
+            self.add_data(collection, id, fields)
+            return
         for key, value in fields.items():
             self.data[collection][id][key] = value
 
